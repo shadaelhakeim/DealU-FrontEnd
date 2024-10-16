@@ -948,6 +948,7 @@ scroll-behavior: smooth;
     width: 100%;
   }
   .column th button {
+    padding: 10px;
     width: auto;
     height:auto ;
     border: none;
@@ -995,7 +996,8 @@ scroll-behavior: smooth;
   margin-left: auto;
 }
 .join button {
-  margin-left: 90px;
+  margin-left: 100px;
+  margin-top: 40px;
   text-align: center;
   width: 200px;
   border-radius: 64px;
