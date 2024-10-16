@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="offerdetails.css">
+    <title>Offer Details</title>
+    <style>
+                  *{
+                box-sizing: border-box;
+                margin: 0%;
+                padding: 0%;
+            }
+            .head-h2{
+                text-align: center;
+                margin: 40px 0px;
+            }
+
+            section{
+                width: 60%;
+                margin: auto;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+            .details-1{
+            width: 50%;
+            }
+            .details-1 img{
+                width: 100%;
+            }
+            .details-2{
+                width: 50%;
+            }
+            .offerdetails {
+                padding: 50px 0;
+              }
+              .heading-section {
+                  text-align: center;
+                  margin-bottom: 20px;
+              }
+              .heading-section h2 {
+                  font-size: 32px;
+                font-weight: 500;
+                padding-top: 10px;
+                padding-bottom: 15px;
+                  font-family: 'Poppins', sans-serif;
+              }
+              h1 {
+                font-size: 28px;
+                font-weight: 700;
+                margin-bottom: 5px;
+              }
+              .reviews-counter {
+                font-size: 13px;
+              }
+              .reviews-counter span {
+                vertical-align: -2px;
+              }
+              .rate {
+                float: left;
+                padding: 0 10px 0 0;
+              }
+              .rate:not(:checked) > input {
+                position:absolute;
+                top:-9999px;
+              }
+              .rate:not(:checked) > label {
+                float: right;
+                width: 15px;
+                overflow: hidden;
+                white-space: nowrap;
+                cursor: pointer;
+                font-size: 21px;
+                color:#ccc;
+                margin-bottom: 0;
+                line-height: 21px;
+              }
+              .rate:not(:checked) > label:before {
+                content: '\2605';
+              }
+              .rate > input:checked ~ label {
+                color: #ffc700;    
+              }
+              .rate:not(:checked) > label:hover,
+              .rate:not(:checked) > label:hover ~ label {
+                color: #deb217;  
+              }
+              .rate > input:checked + label:hover,
+              .rate > input:checked + label:hover ~ label,
+              .rate > input:checked ~ label:hover,
+              .rate > input:checked ~ label:hover ~ label,
+              .rate > label:hover ~ input:checked ~ label {
+                color: #c59b08;
+              }
+              
+              .expiration {
+                margin-bottom: 10px;
+              }
+              
+              .columns {
+                margin: 0 auto;
+                max-width: 900px;
+
+              }
+              
+              .details {
+                position: relative;
+                width: 100%;
+              }
+              
+              
+              .container {
+                position: relative;
+                width: 130%;
+                height: 100%;
+                float: left;
+                margin-left: -100px;
+              }
+              
+              .expiration {
+                font-size: 16px;
+                color: #777474;
+              }
+              
+              .share-container {
+                padding-left: 0;
+              }
+              
+              
+              .columns {
+                margin-top: 30px;
+              }
+              
+              .button {
+                width: 100%;
+                border-radius: 0;
+              }
+              
+              #share-container {
+                padding-left: 0;
+              }
+              
+              #buy-container {
+                padding-right: 0;
+              } 
+              
+              .share-button {
+                background: #9FACE6;
+                color: white;
+                border: none;
+                border-radius: 6px;
+              }
+              .popup{
+                width: 400px;
+                position: absolute;
+                top: 0%;
+                left: 50%;
+                transform: translate(-50% , -50%) scale(0.1);
+                border-radius:15px;
+                padding: 10px;
+                background-color: #9FACE6;
+                text-align: center;
+                box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+                color: #fff;
+                visibility: hidden; 
+                transition:  0.4s , top 0.4s;
+              }
+              .open-popup{
+                visibility: visible; 
+                top: 50%;
+                transform: translate(-50% , -50%) scale(1);
+              }
+              .link-copy  button{
+                width: 100px;
+                height: 25px;
+                margin-left: -10px;
+                border: 0px;
+                background-color: #74EBD5;
+                cursor: pointer;
+              
+              } 
+              .popup p{
+                margin: 10px 0px ;
+              }
+              .popup span{
+                color: #74EBD5;
+                font-weight: bold;
+              }
+              .popup img{
+              width:150px;
+              margin-top:-50px ;
+              }
+              .close-btn button{
+                margin: 10px 0px;
+                background-color: #74EBD5;
+                box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+                text-align: center;
+                padding: 10px;
+                border-radius: 20px;
+                width: 100px;
+                cursor: pointer;
+              }
+              
+              .buy-button {
+                background: #74EBD5;
+                color: white;
+                border: none;
+                border-radius: 6px;
+              }
+              
+              .buy-button:hover, .buy-button:active, .buy-button:focus {
+                color: ghostwhite;
+                opacity: 0.9;
+              }
+              
+              .share-button:hover, .share-button:active, .share-button:focus {
+                color: ghostwhite;
+                opacity: 0.9;
+              }
+              
+              @media (max-width: 769px) {
+                #share-container, #buy-container {
+                  padding: 0 0 15px 0;
+                }
+              }
+              .popup{
+                width: 400px;
+              }
+              .review-form .form-group {
+                  clear: both;
+                  font-size: 15px;
+                  line-height: 24px;
+                  color: #7a7a7a;
+              }
+              
+              .review-form .rate {
+                  float: none;
+                  display: inline-block;
+              }
+              .review-heading {
+                  font-size: 24px;
+                font-weight: 600;
+                line-height: 24px;
+                margin-bottom: 6px;
+                text-transform: uppercase;
+                color: black;
+              }
+              .form-control:focus {
+                  outline: none;
+                  box-shadow: none;
+              }
+              .review-form .form-control {
+                  font-size: 14px;
+                padding: 25px;
+                font-size: 13px;
+                margin-bottom: 10px;
+                background: #f9f9f9;
+                border: 0;
+                border-radius: 10px;
+              }
+              .review-form input.form-control {
+                  height: 40px;
+              }
+              .review-form textarea.form-control {
+                  resize: none;
+              }
+              .round-black-btn {
+                  border-radius: 4px;
+                background: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+                color: #fff;
+                padding: 7px 45px;
+                display: inline-block;
+                margin-top: 20px;
+                border:none; 
+                transition: all 0.5s ease-in-out 0s;
+                text-transform: uppercase;
+                  cursor: pointer;
+              }
+              .round-black-btn:hover,
+              .round-black-btn:focus,
+              .round-black-btn:active {
+                  color: ghostwhite;
+                opacity: 0.6;
+              }
+              .details-1{
+                width: 50%;
+              } 
+              .details-2{
+                width: 45%;
+              } 
+              
+              /*start header*/
+            .nav {
+              height: 60px;
+              width: 100%;
+              background-image: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+              position: relative;
+              opacity: 0.8;
+              font-family: 'Times New Roman', Times, serif;
+            }
+
+            .nav > .nav-header {
+              display: inline;
+            }
+
+            .nav > .nav-header > .nav-title {
+              display: inline-block;
+              font-size: 22px;
+              color: #fff;
+              padding: 15px 10px 7px 10px;
+              margin-left: 15px;
+            }
+
+            .nav > .nav-btn {
+              display: none;
+            }
+
+            .nav > .nav-links {
+              display: inline;
+              float: right;
+              font-size: 18px;
+              margin-top: 5px;
+            }
+
+            .nav > .nav-links > a {
+              display: inline-block;
+              padding: 9px 9px 8px 10px;
+              text-decoration: none;
+              color: #ffffff;
+              margin-right: 20px;
+              border-radius: 20px;
+
+            }
+
+            .nav > .nav-links > a:hover {
+              background-color: rgba(0, 0, 0, 0.3);
+            }
+
+            .nav > #nav-check {
+              display: none;
+            }
+
+            @media (max-width:800px) {
+
+
+              .popup{
+                width: 320px;
+              }
+
+              .details-1{
+                  width: 100%;
+                } 
+                .details-2{
+                  margin-top: 15px;
+                  width: 100%;
+                } 
+                section{
+                  width: 90%;
+                } 
+
+
+
+              .nav > .nav-btn {
+                display: inline-block;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+              }
+              .nav > .nav-btn > label {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                padding: 13px;
+              }
+              .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+                background-color: rgba(0, 0, 0, 0.3);
+                padding: 10px;
+              }
+              .nav > .nav-btn > label > span {
+                display: block;
+                width: 25px;
+                height: 10px;
+                border-top: 2px solid #eee;
+              }
+              .nav > .nav-links {
+                position: absolute;
+                display: block;
+                width: 100%;
+                background-color: #333;
+                height: 0px;
+                transition: all 0.3s ease-in;
+                overflow-y: hidden;
+                top: 50px;
+                left: 0px;
+              }
+              .nav > .nav-links > a {
+                display: block;
+                width: 100%;
+              }
+              .nav > #nav-check:not(:checked) ~ .nav-links {
+                height: 0px;
+              }
+              .nav > #nav-check:checked ~ .nav-links {
+                height: calc(100vh - 50px);
+                overflow-y: auto;
+              }
+            }
+            
+            /*end header*/
+            /* Footer main */
+.ft-main {
+    padding: 1.25rem 1.875rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    font-family: initial;
+    border-top: 1px solid gainsboro;
+    margin-top: 70px;
+    
+}
+@media only screen and (min-width: 29.8125rem /* 477px */) {
+ .ft-main {
+   justify-content: space-evenly;
+ }
+}
+@media only screen and (min-width: 77.5rem /* 1240px */) {
+ .ft-main {
+   justify-content: space-evenly;
+ }
+}
+.ft-main-item {
+ padding: 1.25rem;
+ min-width: 12.5rem;
+}
+.ft-main-item ul {
+list-style: none;
+text-decoration: none!important;
+}
+.ft-main-item li {
+ list-style: none;
+}
+.ft-main-item ul li a{
+color: gray;
+}
+.ft-title{
+    color: rgb(109, 108, 108);
+}
+.ft{
+    color: gray;
+}
+
+/* Footer main | Newsletter form */
+.form1 {
+ display: flex;
+ flex-wrap: wrap;
+}
+input[type="email"] {
+ border: 0;
+ padding: 0.625rem;
+ margin-top: 0.3125rem;
+ border: 1px solid #8080804d;
+}
+input[type="submit"] {
+ background-color: #92bee1;
+ color: #fff;
+ cursor: pointer;
+ border: 0;
+ padding: 0.625rem 0.9375rem;
+ margin-top: 0.3125rem;
+}
+.ft-title{
+    color: #5e5e5e;
+    padding: 5px;
+    margin-bottom: 10px;  
+}
+.ft-main-item .ft{
+   color: gray;
+    padding: 5px;
+}
+.ft-title ul{
+    list-style: none;
+}
+.ft-title ul li{
+    list-style: none!important;
+}
+.ft-title ul li a{
+   border-bottom: none!important;
+}
+/* Footer social */
+.ft-social {
+ padding: 0 1.875rem 1.25rem;
+}
+.ft-social-list {
+ display: flex;
+ justify-content: center;
+ border-top: 1px #77777785  solid;
+ padding-top: 1.25rem;
+}
+.ft-social-list li {
+ margin: 0.5rem;
+ font-size: 1.25rem;
+ list-style: none!important;
+}
+/* Footer legal */
+.ft-legal {
+    padding: 0.775rem 2.875rem;
+    background-color: #333;
+    display: flex;
+    margin-top: 6px;
+    margin-bottom: -42px;
+}
+.ft-legal-list {
+ width: 100%;
+ display: flex;
+ flex-wrap: wrap;
+ list-style: none;
+}
+.ft-legal-list li {
+ margin: 0.125rem 0.625rem;
+ white-space: nowrap;
+}
+.ft-legal-list li {
+ color: white;;
+}
+/* one before the last child */
+.ft-legal-list li:nth-last-child(2) {
+   flex: 1;
+}
+.nav-title img{
+    width: 132px;
+    margin-top: -39px;
+    height: 99px;
+}
+  
+    </style>
+</head>
+<body>
+  <!--start header-->
+  <div class="nav">
+    <input type="checkbox" id="nav-check">
+    <div class="nav-header">
+      <div class="nav-title">
+        <img src="images/photo_2023-05-15_18-32-23-removebg-preview.png" alt="">
+      </div>
+    </div>
+    <div class="nav-btn">
+      <label for="nav-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+  
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="offers.html">Offers</a>
+        <a href="coupons.html">Coupons</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="active" href="sign up.html" target="_blank">Sign Up</a>
+        <a class="not-active" href="log in.html" target="_blank">Log In</a>
+    </div>
+  </div>
+    <!--End header-->
+ <div class="head-h2" style="
+ font-size: 24px;
+ font-family: cursive;
+ text-transform: capitalize;
+"><h2>Offer Details</h2></div>
+ <section >
+  
+
+        <div class=" details-1">
+            <img src="images/Buffalo 2 Sandwich Offer.jpg" alt="" >
+        </div>
+        <div class=" details-2">
+            <div class="details">
+              <h1>2 Sandwiches + 2 Fries + 2 Cola for EGP 265 instead of EGP 310</h1>
+              <div class="reviews-counter">
+                <div class="rate">
+                    <input type="radio" id="star5" name="rate" value="5" checked />
+                    <label for="star5" title="text">5 stars</label>
+                    <input type="radio" id="star4" name="rate" value="4" checked />
+                    <label for="star4" title="text">4 stars</label>
+                    <input type="radio" id="star3" name="rate" value="3" checked />
+                    <label for="star3" title="text">3 stars</label>
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label for="star2" title="text">2 stars</label>
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label for="star1" title="text">1 star</label>
+                  </div>
+                  <span>Reviews</span>
+              </div>
+
+              <p class="description">Choose 2 200gm sandwiches + 2 Fries + 2 Colas and buffalo sauce at Buffalo Burger and pay Only EGP 265 instead of EGP 310  <br>
+              Sandwiches available in this offer: Old School 200 gm, Cholo's 200 gm, Charbroiled BBQ 200 gm, Grungy 200 gm, Cholo's Chicken, Chicken Buster.</p>
+              <p class="expiration">Exp. 2024-01-01</p>
+        
+        
+              <div class="columns">
+        
+                <div class="column" id="share-container">
+        
+                  <button class="button share-button" onclick="openPopup()">
+                    <span class="icon is-small">
+                      <i class="fas fa-share"></i>
+                    </span>
+                      <span>SHARE OFFER</span>
+                  </button>
+                   
+                </div>
+                
+                <div class="column" id="buy-container">
+        
+                  <button class="button buy-button">
+                    <span class="icon is-small">
+                        <i class="fas fa-shopping-cart"></i>
+                      </span>
+                      <span>ADD TO CART</span>
+                  </button>
+        
+                </div>
+        
+              </div>
+              <div class="review" id="review">
+                <div class="review-heading">REVIEWS</div>
+
+                <div class="form-group">
+                  <label>Your rating</label>
+                  <div class="reviews-counter">
+                <div class="rate">
+                    <input type="radio" id="star5" name="rate" value="5" />
+                    <label for="star5" title="text">5 stars</label>
+                    <input type="radio" id="star4" name="rate" value="4" />
+                    <label for="star4" title="text">4 stars</label>
+                    <input type="radio" id="star3" name="rate" value="3" />
+                    <label for="star3" title="text">3 stars</label>
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label for="star2" title="text">2 stars</label>
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label for="star1" title="text">1 star</label>
+                </div>
+              </div>
+            </div> 
+
+                <form class="review-form">
+                            <div class="form-group">
+                            <label>Your message</label> <br>
+                            <textarea class="form-control" rows="10" style="width:400px;"></textarea>
+                            </div>
+                            <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                <input type="text" name="" class="form-control" placeholder="Name*" style="
+                                width: 400px;
+                        ">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                <input type="text" name="" class="form-control" placeholder="Email*" style="width: 400px;">
+                                </div>
+                            </div>
+                            </div>
+                            <button class="round-black-btn">Submit Review</button>
+                  </form>
+              
+              </div>
+        
+            </div>
+          
+        </div>
+        
+        <div class="popup" id="popup">
+          <img src="images/404-tick.png" alt="">
+          <p> Share the link and get offer 100% , to get this offer  <span>50.000</span> views are required.</p>
+            <div>
+                <div class="link-copy">
+                  <input type="text" value=" " id="myInput">
+                  <button onclick="myFuntion()">Copy Text</button>
+                </div>
+                <div class="close-btn">
+                  <button type="button" onclick="closePopup()"> OK </button>
+                </div>
+            </div>
+        </div>
+    </section>
+        <!--start footer-->
+ <footer>
+  <!-- Footer main -->
+  <section1 class="ft-main" style="    font-family: initial;
+">
+    <div class="ft-main-item">
+      <h2 class="ft-title">About</h2>
+      <ul>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Customers</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="ft-main-item">
+      <h2 class="ft-title">Resources</h2>
+      <ul>
+        <li><a href="#">Docs</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">eBooks</a></li>
+        <li><a href="#">Webinars</a></li>
+      </ul>
+    </div>
+    <div class="ft-main-item">
+      <h2 class="ft-title">Contact</h2>
+      <ul>
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Sales</a></li>
+        <li><a href="#">Advertise</a></li>
+      </ul>
+    </div>
+    <div class="ft-main-item">
+      <h2 class="ft-title">Stay Updated</h2>
+      <p class="ft">Subscribe to our newsletter to get our latest news.</p>
+      <form1>
+        <input type="email" name="email" placeholder="Enter email address">
+        <input type="submit" value="Subscribe">
+      </form1>
+    </div>
+  </section1>
+
+  <!-- Footer social -->
+  <section1 class="ft-social">
+    <ul class="ft-social-list">
+      <li><a href="#"><i class="fab fa-facebook" style="color: gray;"></i></a></li>
+      <li><a href="#"><i class="fab fa-twitter" style="color: gray;"></i></a></li>
+      <li><a href="#"><i class="fab fa-instagram" style="color: gray;"></i></a></li>
+      <li><a href="#"><i class="fab fa-linkedin" style="color: gray;"></i></a></li>
+    </ul>
+  </section>
+
+  <!-- Footer legal -->
+  <section1 class="ft-legal">
+    <ul class="ft-legal-list">
+      <li><a href="#" style="color:white;">Terms &amp; Conditions</a></li>
+      <li><a href="#" style="color: white;">Privacy Policy</a></li>
+      <li>&copy; 2023 Copyright for DealU.</li>
+    </ul>
+  </section1>
+</footer>
+<!--end footer-->
+        
+            <Script>
+              let popup = document.getElementById("popup");
+              function openPopup(){
+                popup.classList.add("open-popup");
+              }
+              function closePopup(){
+                popup.classList.remove("open-popup");
+              }
+        
+        
+              function myFuntion(){
+                    var copyText= document.getElementById("myInput");
+                    copyText.select();
+                    copyText.setSelectionRange(0,99999);
+                    navigator.clipboard.writeText(copyText.value);
+                    alert(" Copied the text : " + copyText.value);
+                    console.log('yes');
+                }
+            </Script>     
+   </section>
+</body>
+</html>
